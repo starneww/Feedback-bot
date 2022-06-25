@@ -132,6 +132,7 @@ async def start(bot, message):
         text="**Hi {}!**\n".format(message.chat.first_name)+C.START,
         reply_markup=InlineKeyboardMarkup([
             [ InlineKeyboardButton(text="🛠SUPPORT🛠", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="📮UPDATES📮", url=f"{C.UPDATE_CHANNEL}")]
+            [InlineKeyboardButton("CLOSE", callback_data="closeMeh")],
         ])
     )
 
