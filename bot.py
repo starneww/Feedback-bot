@@ -102,6 +102,8 @@ async def _(bot, cmd):
 
 @bot.on_message(filters.command('start') & (filters.private | filters.group))
 async def start(bot, message):
+  
+  # Callback
   @bot.on_callback_query()
 async def callback_handlers(bot: Client, cb: CallbackQuery):
     chat_id = message.from_user.id
