@@ -102,6 +102,8 @@ async def _(bot, cmd):
 
 @bot.on_message(filters.command('start') & (filters.private | filters.group))
 async def start(bot, message):
+  @bot.on_callback_query()
+async def callback_handlers(bot: Client, cb: CallbackQuery):
     chat_id = message.from_user.id
     if "closeMeh" in cb.data:
         await cb.message.delete(True)
@@ -136,7 +138,7 @@ async def start(bot, message):
             [ InlineKeyboardButton(text="🛠SUPPORT🛠", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="📮UPDATES📮", url=f"{C.UPDATE_CHANNEL}")]
             [InlineKeyboardButton(text="CLOSE", callback_data="closeMeh")],
          ]
-      )
+      ), 
    )
 
 
