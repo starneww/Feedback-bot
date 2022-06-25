@@ -134,6 +134,21 @@ async def start(bot, message):
             [ InlineKeyboardButton(text="🛠SUPPORT🛠", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="📮UPDATES📮", url=f"{C.UPDATE_CHANNEL}")]
         ])
     )
+await message.reply_photo(photo=START_IMG,
+
+             caption=START_MSG.format(
+
+                 first = message.from_user.first_name,
+
+                 last = message.from_user.last_name,
+
+                 mention = message.from_user.mention,
+
+                 id = message.from_user.id),
+
+                 reply_markup = InlineKeyboardMarkup(buttons)
+
+               )
 
 @bot.on_message(filters.command('help') & (filters.group | filters.private))
 async def help(bot, message):
