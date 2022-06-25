@@ -103,6 +103,8 @@ async def _(bot, cmd):
 @bot.on_message(filters.command('start') & (filters.private | filters.group))
 async def start(bot, message):
     chat_id = message.from_user.id
+    if "closeMeh" in cb.data:
+        await cb.message.delete(True)
     # Adding to DB
     if not await db.is_user_exist(chat_id):
         data = await bot.get_me()
@@ -132,8 +134,12 @@ async def start(bot, message):
         text="**Hi {}!**\n".format(message.chat.first_name)+C.START,
         reply_markup=InlineKeyboardMarkup([
             [ InlineKeyboardButton(text="🛠SUPPORT🛠", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="📮UPDATES📮", url=f"{C.UPDATE_CHANNEL}")]
-        ])
-    )
+            [InlineKeyboardButton(text="CLOSE", callback_data="closeMeh")],
+         ]
+      )
+   )
+
+
 
 @bot.on_message(filters.command('help') & (filters.group | filters.private))
 async def help(bot, message):
