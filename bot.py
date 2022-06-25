@@ -197,9 +197,11 @@ async def donate(bot, message):
 
         )
 
+
     except Exception as e:
 
-        await cmd.reply_text(e)
+
+
 
 @bot.on_message(filters.command("settings") & filters.private)
 async def opensettings(bot, cmd):
