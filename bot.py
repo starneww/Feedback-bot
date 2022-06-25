@@ -130,10 +130,103 @@ async def start(bot, message):
     )
     await message.reply_text(
         text="**Hi {}!**\n".format(message.chat.first_name)+C.START,
-        reply_markup=InlineKeyboardMarkup([
-            [ InlineKeyboardButton(text="🛠SUPPORT🛠", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="📮UPDATES📮", url=f"{C.UPDATE_CHANNEL}")]
-        ])
+        
+      
+      START_TEXT = """
+<i>🌹 Hᴇʏ 
+<i>I'ᴍ Tᴇʟᴇɢʀᴀᴍ Fɪʟᴇs Dɪʀᴇᴄᴛ ᴅᴏᴡɴʟᴏᴀᴅ Lɪɴᴋs ɢᴇɴᴇʀᴀᴛᴏʀ ʙᴏᴛ</i>\n
+<i>Cʟɪᴄᴋ ᴏɴ Hᴇʟᴘ ᴛᴏ ɢᴇᴛ ᴍᴏʀᴇ ɪɴғᴏʀᴍᴀᴛɪᴏɴ</i>\n
+<i><u>⚠ ᴡᴀʀɴɪɴɢ ⚠</u>\n
+<b>ᴘᴏʀɴᴏɢʀᴀᴘʜʏ ᴄᴏɴᴛᴇɴᴛs ᴀʀᴇ sᴛʀɪᴄᴛʟʏ ᴘʀᴏʜɪʙɪᴛᴇᴅ & ɢᴇᴛ ᴘᴇʀᴍᴀɴᴇɴᴛ ʙᴀɴ.ʏᴏᴜ 🙂</b>\n
+<i><b>😈Bᴏᴛ Mᴀɪɴᴛᴀɪɴᴇᴅ Bʏ :</b>@robo_glitch</b>"""
+
+HELP_TEXT = """
+<i>- Sᴇɴᴅ ᴍᴇ ᴀɴʏ ꜰɪʟᴇ (ᴏʀ) ᴍᴇᴅɪᴀ ꜰʀᴏᴍ ᴛᴇʟᴇɢʀᴀᴍ.</i>
+<i>- I ᴡɪʟʟ ᴘʀᴏᴠɪᴅᴇ ᴇxᴛᴇʀɴᴀʟ ᴅɪʀᴇᴄᴛ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ !.</i>
+<i>- Aᴅᴅ Mᴇ ɪɴ ʏᴏᴜʀ Cʜᴀɴɴᴇʟ Fᴏʀ Dɪʀᴇᴄᴛ Dᴏᴡɴʟᴏᴀᴅ Lɪɴᴋs Bᴜᴛᴛᴏɴ</i>
+<i>- Tʜɪs ɪs Pᴇʀᴍᴇᴀɴᴛ Lɪɴᴋ Wɪᴛʜ Fᴀsᴛᴇsᴛ Sᴘᴇᴇᴅ</i>\n
+<u>🚸 ᴡᴀʀɴɪɴɢ 🚸</u>\n
+<b>⚠ ᴘᴏʀɴᴏɢʀᴀᴘʜʏ ᴄᴏɴᴛᴇɴᴛs ᴀʀᴇ sᴛʀɪᴄᴛʟʏ ᴘʀᴏʜɪʙɪᴛᴇᴅ & ɢᴇᴛ ᴘᴇʀᴍᴀɴᴇɴᴛ ʙᴀɴ 🙂</b>\n\n
+<i>Cᴏɴᴛᴀᴄᴛ ᴅᴇᴠᴇʟᴏᴘᴇʀ (ᴏʀ) ʀᴇᴘᴏʀᴛ ʙᴜɢꜱ</i> <b>: <a href='https://t.me/robo_glitch'>[ ᴄʟɪᴄᴋ ʜᴇʀᴇ ]</a></b>"""
+
+ABOUT_TEXT = """
+<b>✧ 😎 Mʏ ɴᴀᴍᴇ : ꜰɪʟᴇ ᴛᴏ ᴅᴏᴡɴʟᴏᴀᴅ ʟɪɴᴋ ʙᴏᴛ✪</b>\n
+<b>✧ ⚡ Vᴇʀꜱɪᴏɴ : <a href='https://telegram.me/robo_glitch'>[V.9.9]</a></b>\n
+<b>✧ 📮 Sᴜᴘᴘᴏʀᴛ : <a href='https://t.me/dubbedweb'>࿐ɢʀᴏᴜᴘ</a></b>\n
+<b>✧ 📢 ᴄʜᴀɴɴᴇʟ: <a href='https://t.me/hddubhub4u'>༆ᴊᴏɪɴ</a></b>\n
+<b>✧ 😈 Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://telegram.me/robo_glitch'>༒ɢʟɪᴛᴄʜ༒</a></b>\n
+<b>✧ ♲︎ Lᴀꜱᴛ ᴜᴘᴅᴀᴛᴇᴅ : <a href='https://telegram.me/robo_glitch'>[23-ᴊᴜɴᴇ-2022] 9:00 ᴘᴍ</a></b>"""
+
+START_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('📍 Hᴇʟᴘ 📍', callback_data='help'),
+        InlineKeyboardButton('🔮 Aʙᴏᴜᴛ 🔮', callback_data='about'),
+        ],[
+        InlineKeyboardButton('📢 ᴄʜᴀɴɴᴇʟ', url="https://t.me/hddubhub4u"), 
+        InlineKeyboardButton('❌ Cʟᴏsᴇ ', callback_data='close')
+        ]]
     )
+HELP_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('🏠 Hᴏᴍᴇ', callback_data='home'),
+        InlineKeyboardButton('🔮 Aʙᴏᴜᴛ 🔮', callback_data='about'),
+        ],[
+        InlineKeyboardButton('🤖 ᴏᴛʜᴇʀ ʙᴏᴛs', url="https://t.me/hddubhub4u"), 
+        InlineKeyboardButton('❌ Cʟᴏsᴇ', callback_data='close')
+        ]]
+    )
+ABOUT_BUTTONS = InlineKeyboardMarkup(
+        [[
+        InlineKeyboardButton('🏠 Hᴏᴍᴇ', callback_data='home'),
+        InlineKeyboardButton('📍 Hᴇʟᴘ 📍', callback_data='help'),
+        ],[
+        InlineKeyboardButton('📮 Sᴜᴘᴘᴏʀᴛ', url="https://t.me/dubbedweb"), 
+        InlineKeyboardButton('❌ Cʟᴏsᴇ', callback_data='close')
+        ]]
+    )
+
+@StreamBot.on_callback_query()
+async def cb_data(bot, update):
+    if update.data == "home":
+        await update.message.edit_text(
+            text=START_TEXT.format(update.from_user.mention),
+            disable_web_page_preview=True,
+            reply_markup=START_BUTTONS
+        )
+    elif update.data == "help":
+        await update.message.edit_text(
+            text=HELP_TEXT,
+            disable_web_page_preview=True,
+            reply_markup=HELP_BUTTONS
+        )
+    elif update.data == "about":
+        await update.message.edit_text(
+            text=ABOUT_TEXT,
+            disable_web_page_preview=True,
+            reply_markup=ABOUT_BUTTONS
+        )
+    else:
+        await update.message.delete()
+
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+
+      
 
 @bot.on_message(filters.command('help') & (filters.group | filters.private))
 async def help(bot, message):
