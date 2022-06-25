@@ -189,10 +189,17 @@ async def donate(bot, message):
         text=C.DONATE + "If You Liked This Bot You Can Also Donate Creator through BTC `3AKE4bNwb9TsgaofLQxHAGCR9w2ftwFs2R`",
         reply_markup=InlineKeyboardMarkup([
             [ InlineKeyboardButton(text="DONATE", url=f"{donate_link}")]
-        ])
-    )
+            [InlineKeyboardButton(text="CLOSE", callback_data="closeMeh")],
 
+                ]
 
+            )
+
+        )
+
+    except Exception as e:
+
+        await cmd.reply_text(e)
 
 @bot.on_message(filters.command("settings") & filters.private)
 async def opensettings(bot, cmd):
