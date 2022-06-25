@@ -9,7 +9,7 @@
   ],
   "success_url": "/",
   "website": "https://github.com/HeimanPictures/HeimanPictures/",
-  "repository": "https://github.com/HeimanPictures/Feedback-bot/fork",
+  "repository": "https://github.com/HeimanPictures/Feedback-bot",
   "env": {
     "START_TEXT": {
       "description": "Your Start message as a string & There Is default Of 'Hello <username>'.",
