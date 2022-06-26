@@ -78,21 +78,21 @@ async def callback_handlers(bot: Client, cb: CallbackQuery):
             # 
             await db.set_notif(user_id, notif=True)
         await cb.message.edit(
-            f"`Here You Can Set Your Settings:`\n\nSuccessfully setted notifications to **{await db.get_notif(user_id)}**",
+            f"`ʜᴇʀᴇ ʏᴏᴜ ᴄᴀɴ sᴇᴛ ʏᴏᴜʀ sᴇᴛᴛɪɴɢs:`\n\n✔ sᴜᴄᴄᴇssꜰᴜʟʟʏ sᴇᴛᴛᴇᴅ ɴᴏᴛɪꜰɪᴄᴀᴛɪᴏɴs ᴛᴏ **{await db.get_notif(user_id)}**",
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
                         InlineKeyboardButton(
-                            f"NOTIFICATION  {'🔔' if ((await db.get_notif(user_id)) is True) else '🔕'}",
+                            f"ɴᴏᴛɪꜰɪᴄᴀᴛɪᴏɴS  {'🔔' if ((await db.get_notif(user_id)) is True) else '🔕'}",
                             callback_data="notifon",
                         )
                     ],
-                    [InlineKeyboardButton("CLOSE", callback_data="closeMeh")],
+                    [InlineKeyboardButton("💔 ᴄʟᴏsᴇ", callback_data="closeMeh")],
                 ]
             ),
         )
         await cb.answer(
-            f"Successfully setted notifications to {await db.get_notif(user_id)}"
+            f"✔ sᴜᴄᴄᴇssꜰᴜʟʟʏ sᴇᴛᴛᴇᴅ ɴᴏᴛɪꜰɪᴄᴀᴛɪᴏɴs ᴛᴏ {await db.get_notif(user_id)}"
         )
         
         
@@ -131,7 +131,7 @@ async def start(bot, message):
     await message.reply_text(
         text="**Hi {}!**\n".format(message.chat.first_name)+C.START,
         reply_markup=InlineKeyboardMarkup([
-            [ InlineKeyboardButton(text="🛠SUPPORT🛠", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="📮UPDATES📮", url=f"{C.UPDATE_CHANNEL}")]
+            [ InlineKeyboardButton(text="📢 ᴄʜᴀɴɴᴇʟ", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="👥 ɢʀᴏᴜᴘ", url=f"{C.UPDATE_CHANNEL}")]
         ])
     )
 
@@ -158,7 +158,7 @@ async def help(bot, message):
     await message.reply_text(
         text=C.HELP,
         reply_markup=InlineKeyboardMarkup([
-            [ InlineKeyboardButton(text="🛠SUPPORT🛠", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="📮UPDATES📮", url=f"{C.UPDATE_CHANNEL}")]
+            [ InlineKeyboardButton(text="📢 ᴄʜᴀɴɴᴇʟ", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="👥 ɢʀᴏᴜᴘ", url=f"{C.UPDATE_CHANNEL}")]
         ])
     )
 
@@ -185,9 +185,9 @@ async def donate(bot, message):
         return
         
     await message.reply_text(
-        text=C.DONATE + "If You Liked This Bot You Can Also Donate Creator through BTC `3AKE4bNwb9TsgaofLQxHAGCR9w2ftwFs2R`",
+        text=C.DONATE + "If You Liked This Bot `",
         reply_markup=InlineKeyboardMarkup([
-            [ InlineKeyboardButton(text="DONATE", url=f"{donate_link}")]
+            [ InlineKeyboardButton(text="💳 ᴅᴏɴᴀᴛᴇ 💳", url=f"{donate_link}")]
         ])
     )
 
@@ -207,11 +207,11 @@ async def opensettings(bot, cmd):
         )
     try:
         await cmd.reply_text(
-            text=f"⚙ `Here You Can Set Your Settings:` ⚙\n\nSuccessfully setted notifications to **{await db.get_notif(user_id)}**",
+            text=f"⚙ `ʜᴇʀᴇ ʏᴏᴜ ᴄᴀɴ sᴇᴛ ʏᴏᴜʀ sᴇᴛᴛɪɴɢs:` ⚙\n\n✔ sᴜᴄᴄᴇssꜰᴜʟʟʏ sᴇᴛᴛᴇᴅ ɴᴏᴛɪꜰɪᴄᴀᴛɪᴏɴs ᴛᴏ **{await db.get_notif(user_id)}**",
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton(text=f"NOTIFICATION  {'🔔' if ((await db.get_notif(user_id)) is True) else '🔕'}",callback_data="notifon")],
-                    [InlineKeyboardButton(text="CLOSE", callback_data="closeMeh")],
+                    [InlineKeyboardButton(text=f"ɴᴏᴛɪꜰɪᴄᴀᴛɪᴏɴS {'🔔' if ((await db.get_notif(user_id)) is True) else '🔕'}",callback_data="notifon")],
+                    [InlineKeyboardButton(text="💔 ᴄʟᴏsᴇ", callback_data="closeMeh")],
                 ]
             )
         )
@@ -302,7 +302,7 @@ async def unban(c, m):
         unban_log_text = f"Unbanning user 🤪 {user_id}"
 
         try:
-            await c.send_message(user_id, f"Your ban was lifted!")
+            await c.send_message(user_id, f"💞 Your ban was lifted 🥳!")
             unban_log_text += "\n\n✅ User notified successfully! ✅"
         except BaseException:
             traceback.print_exc()
