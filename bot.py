@@ -256,6 +256,21 @@ async def donate(bot, message):
             f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
         )
         
+       
+    ban_status = await db.get_ban_status(chat_id)
+
+    is_banned = ban_status['is_banned']
+
+    ban_duration = ban_status['ban_duration']
+
+    ban_reason = ban_status['ban_reason']
+
+    if is_banned is True:
+
+        await message.reply_text(f"You are Banned 🚫 to use this bot for **{ban_duration}** day(s) for the reason __{ban_reason}__ \n\n**Message from the admin 🤠**")
+
+        return
+      
         await message.reply_text(
 
         text=C.CONTACT + "this is hoe you can contact me 🙏`",
@@ -267,6 +282,7 @@ async def donate(bot, message):
         ])
 
     )
+        
 @bot.on_message(filters.private & filters.command("broadcast"))
 async def broadcast_handler_open(_,m):
     if m.from_user.id not in AUTH_USERS:
