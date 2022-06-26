@@ -218,7 +218,7 @@ async def opensettings(bot, cmd):
     except Exception as e:
         await cmd.reply_text(e)
 
-@bot.on_message(filters.command("hi") & filters.private)
+@bot.on_message(filters.command("bots") & filters.private)
 async def opensettings(bot, cmd):
     user_id = cmd.from_user.id
     # Adding to DB
@@ -232,10 +232,10 @@ async def opensettings(bot, cmd):
         )
     try:
         await cmd.reply_text(
-            text=f"⚙ `cmnd tryyyyyyyy:` ❤❤❤\n\**press below to know more**",
+            text=f"🔮 `List off my bots :`📋\n\**press below to know more**",
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton(text=f"next  {'💬' if ((await db.get_notif(user_id)) is True) else '💞'}",callback_data="notifon")],
+                    [InlineKeyboardButton(text=f"Hou to use  {'💬' if ((await db.get_notif(user_id)) is True) else '💞'}",callback_data=okkhgf")],
                     [InlineKeyboardButton(text="CLOSE", callback_data="closeMeh")],
                 ]
             )
