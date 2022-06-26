@@ -218,6 +218,30 @@ async def opensettings(bot, cmd):
     except Exception as e:
         await cmd.reply_text(e)
 
+@bot.on_message(filters.command("settings") & filters.private)
+async def opensettings(bot, cmd):
+    user_id = cmd.from_user.id
+    # Adding to DB
+    if not await db.is_user_exist(user_id):
+        data = await bot.get_me()
+        BOT_USERNAME = data.username
+        await db.add_user(user_id)
+        await bot.send_message(
+            LOG_CHANNEL,
+            f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
+        )
+    try:
+        await cmd.reply_text(
+            text=f"⚙ `cmnd tryyyyyyyy:` ❤❤❤\n\**nSuccessfully setted notifications to **",
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [InlineKeyboardButton(text=f"NOTIFICATION  {'🔔' if ((await db.get_notif(user_id)) is True) else '🔕'}",callback_data="notifon")],
+                    [InlineKeyboardButton(text="CLOSE", callback_data="closeMeh")],
+                ]
+            )
+        )
+    except Exception as e:
+        await cmd.reply_text(e)
 
 @bot.on_message(filters.private & filters.command("broadcast"))
 async def broadcast_handler_open(_, m):
