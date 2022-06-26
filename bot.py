@@ -263,14 +263,14 @@ async def donate(bot, message):
         reply_markup=InlineKeyboardMarkup(
 
             [[ 
-            InlineKeyboardButton(text="📖read", url="https://t.me/dubbedweb"),
+            InlineKeyboardButton('📖read', url="https://t.me/dubbedweb"),
 
         ]]
 
     )
         
 @bot.on_message(filters.private & filters.command("broadcast"))
-async def broadcast_handler_open(_, m):
+async def broadcast_handler_open(_,m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
         return
