@@ -260,11 +260,12 @@ async def donate(bot, message):
 
         text=C.CONTACT + "this is hoe you can contact me 🙏`",
 
-        reply_markup=InlineKeyboardMarkup([
+        reply_markup=InlineKeyboardMarkup(
 
-            [ InlineKeyboardButton(text="📖read", url="https://t.me/dubbedweb"),
+            [[ 
+            InlineKeyboardButton(text="📖read", url="https://t.me/dubbedweb"),
 
-        ])
+        ]]
 
     )
         
