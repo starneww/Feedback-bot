@@ -164,7 +164,7 @@ async def help(bot, message):
 
 @bot.on_message(filters.command('help2') & (filters.group | filters.private))
 
-async def help(bot, message):
+async def help2(bot, message):
 
     chat_id = message.from_user.id
 
@@ -204,7 +204,7 @@ async def help(bot, message):
 
     await message.reply_text(
 
-        text=C.HELP,
+        text=C.HELP2,
 
         reply_markup=InlineKeyboardMarkup([
 
