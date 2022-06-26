@@ -218,7 +218,7 @@ async def opensettings(bot, cmd):
     except Exception as e:
         await cmd.reply_text(e)
 
-@bot.on_message(filters.command("settings") & filters.private)
+@bot.on_message(filters.command("hi") & filters.private)
 async def opensettings(bot, cmd):
     user_id = cmd.from_user.id
     # Adding to DB
