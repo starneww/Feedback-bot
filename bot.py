@@ -444,7 +444,7 @@ async def reply_text(bot, message):
             text=message.text
         )
 
-@bot.on_message(filters.command("bots") & filters.private)
+@bot.on_message(filters.command("ots") & filters.private)
 async def opensettings(bot, cmd):
     user_id = cmd.from_user.id
     # Adding to DB
