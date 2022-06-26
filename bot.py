@@ -242,7 +242,32 @@ async def opensettings(bot, cmd):
         )
     except Exception as e:
         await cmd.reply_text(e)
+        
+@bot.on_message(filters.command('contact') & (filters.group | filters.private))
+async def donate(bot, message):
+    chat_id = message.from_user.id
+    # Adding to DB
+    if not await db.is_user_exist(chat_id):
+        data = await bot.get_me()
+        BOT_USERNAME = data.username
+        await db.add_user(chat_id)
+        await bot.send_message(
+            LOG_CHANNEL,
+            f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
+        )
+        
+        await message.reply_text(
 
+        text=C.CONTACT + "this is hoe you can contact me 🙏`",
+
+        reply_markup=InlineKeyboardMarkup([
+
+            [ InlineKeyboardButton(text="📖read", url="https://t.me/dubbedweb"),
+
+        ])
+
+    )
+        
 @bot.on_message(filters.private & filters.command("broadcast"))
 async def broadcast_handler_open(_, m):
     if m.from_user.id not in AUTH_USERS:
@@ -266,7 +291,29 @@ async def sts(c, m):
     )
 
 
-@bot.on_message(filters.private & filters.command("ban_user"))
+@bot.on_message(filters.private & filters.command("ban_user"))@bot.on_message(filters.command('donate') & (filters.group | filters.private))
+
+async def donate(bot, message):
+
+    chat_id = message.from_user.id
+
+    # Adding to DB
+
+    if not await db.is_user_exist(chat_id):
+
+        data = await bot.get_me()
+
+        BOT_USERNAME = data.username
+
+        await db.add_user(chat_id)
+
+        await bot.send_message(
+
+            LOG_CHANNEL,
+
+            f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
+
+        )
 async def ban(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
