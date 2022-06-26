@@ -15,6 +15,8 @@ class Config(object):
     START = str(os.environ.get("START_TEXT", ""))
 
     HELP = str(os.environ.get("HELP_TEXT", ""))
+    
+    HELP2 = str(os.environ.get("HELP_TEXT", ""))
 
     DONATE = str(os.environ.get("DONATE_TEXT", ""))
 
