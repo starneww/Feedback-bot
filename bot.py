@@ -162,6 +162,58 @@ async def help(bot, message):
         ])
     )
 
+@bot.on_message(filters.command('help2') & (filters.group | filters.private))
+
+async def help(bot, message):
+
+    chat_id = message.from_user.id
+
+    # Adding to DB
+
+    if not await db.is_user_exist(chat_id):
+
+        data = await bot.get_me()
+
+        BOT_USERNAME = data.username
+
+        await db.add_user(chat_id)
+
+        await bot.send_message(
+
+            LOG_CHANNEL,
+
+            f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
+
+        )
+
+    ban_status = await db.get_ban_status(chat_id)
+
+    is_banned = ban_status['is_banned']
+
+    ban_duration = ban_status['ban_duration']
+
+    ban_reason = ban_status['ban_reason']
+
+    if is_banned is True:
+
+        await message.reply_text(f"You are Banned 🚫 to use this bot for **{ban_duration}** day(s) for the reason __{ban_reason}__ \n\n**Message from the admin 🤠**")
+
+        return
+
+      
+
+    await message.reply_text(
+
+        text=C.HELP,
+
+        reply_markup=InlineKeyboardMarkup([
+
+            [ InlineKeyboardButton(text="📢 ᴄʜᴀɴɴᴇʟ", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="👥 ɢʀᴏᴜᴘ", url=f"{C.UPDATE_CHANNEL}")]
+
+        ])
+
+    )
+
 
 @bot.on_message(filters.command('donate') & (filters.group | filters.private))
 async def donate(bot, message):
