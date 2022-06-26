@@ -235,7 +235,7 @@ async def opensettings(bot, cmd):
             text=f"🔮 `List off my bots :`📋\n\**press below to know more**",
             reply_markup=InlineKeyboardMarkup(
                 [
-                    [InlineKeyboardButton(text=f"Hou to use  {'💬' if ((await db.get_notif(user_id)) is True) else '💞'}",callback_data=okkhgf")],
+                    [InlineKeyboardButton(text=f"Hou to use  {'💬' if ((await db.get_notif(user_id)) is True) else '💞'}",callback_data="notifon")],
                     [InlineKeyboardButton(text="CLOSE", callback_data="closeMeh")],
                 ]
             )
