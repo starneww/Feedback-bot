@@ -306,7 +306,7 @@ async def sts(c, m):
     )
 
 
-@bot.on_message(filters.private & filters.command("ban_user"))@bot.on_message(filters.command('donate') & (filters.group | filters.private))
+@bot.on_message(filters.private & filters.command("ban_user")) 
 
 async def donate(bot, message):
 
@@ -329,6 +329,8 @@ async def donate(bot, message):
             f"#NEWUSER: \n\nNew User [{message.from_user.first_name}](tg://user?id={message.from_user.id}) started @{BOT_USERNAME} !!",
 
         )
+        
+     @bot.on_message(filters.command('donate') & (filters.group | filters.private))
 async def ban(c, m):
     if m.from_user.id not in AUTH_USERS:
         await m.delete()
