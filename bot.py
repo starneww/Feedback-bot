@@ -129,7 +129,7 @@ async def start(bot, message):
         parse_mode="html"
     )
     await message.reply_text(
-        text="**Hi {}!**\n".format(message.chat.first_name)
+        text="**Hi {}!**\n".format(message.chat.first_name)+C.START,
       
         reply_markup=InlineKeyboardMarkup([
             [ InlineKeyboardButton(text="📢 ᴄʜᴀɴɴᴇʟ", url=f"{C.SUPPORT_GROUP}"), InlineKeyboardButton(text="👥 ɢʀᴏᴜᴘ", url=f"{C.UPDATE_CHANNEL}")]
